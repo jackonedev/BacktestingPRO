@@ -1,0 +1,6 @@
+pandas
+jupyter
+requests
+tqdm
+scipy
+plotly
