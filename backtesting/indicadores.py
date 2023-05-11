@@ -77,13 +77,14 @@ def backtest_entry(data):
     for i in range(len(data)):
         # Verificar si se cumple la condición para una posición larga
         squeeze_released = (data.iloc[i-1]['squeeze_on']) & (not data.iloc[i]['squeeze_on'])
-        long_cond = data['value'][i] > 0#TODO: MÁS QUE MAYOR A CERO, QUE TENGA PENDIENTE POSITIVA
-        # long_cond = data['value'][i] < 0 and data['value'][i] > data['value'][i-1]#TODO: nueva versión
+        # long_cond = data['value'][i] > 0#TODO: MÁS QUE MAYOR A CERO, QUE TENGA PENDIENTE POSITIVA
+        long_cond = data['value'][i] < 0 and data['value'][i] > data['value'][i-1]#TODO: nueva versión
         if squeeze_released and long_cond:#TODO: cambiado a or
             buy_long_indices.append(i)
             
         # Verificar si se cumple la condición para una posición corta
-        short_cond = data['value'][i] < 0
+        # short_cond = data['value'][i] < 0
+        short_cond = data['value'][i] > 0 and data['value'][i] < data['value'][i-1]
         if squeeze_released and short_cond:
             buy_short_indices.append(i)
 
