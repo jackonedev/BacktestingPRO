@@ -9,7 +9,7 @@ def true_range(df):
     df.drop(['tr0', 'tr1', 'tr2'], axis=1, inplace=True)
     return df['tr']
 
-def squeeze_momentum_indicator(data, length=20, mult=2, length_KC=20, length_atr=10, mult_KC=1.5, use_EMA=True):
+def squeeze_momentum_indicator(data, length=20, mult=2, length_KC=20, mult_KC=1.5, length_atr=10, use_EMA=True):
 
     # calculate BB
     m_avg = data['close'].rolling(window=length).mean()
