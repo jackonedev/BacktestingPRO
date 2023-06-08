@@ -19,18 +19,20 @@ def guardar_csv(path_output, data):
         # Guardar el archivo csv
         data.to_csv(archivo_output, index=False)
 
-def crear_directorio(path_output):
+def crear_directorio(path_output: str) -> bool:
     """
-    Crea un directorio en la ruta especificada si este no existe. Si el directorio ya existe, se muestra un mensaje indicando
-    la ubicación del directorio existente.
+    Crea un directorio en la ruta especificada si este no existe y devuelve True. 
+    Si el directorio ya existe, devuelve False.
 
     Argumentos:
     - path_output: ruta relativa o absoluta donde se creará el directorio.
-
+    
     """
     path_absoluto_output = os.path.abspath(path_output)
     if not os.path.exists(path_absoluto_output):
         os.makedirs(path_absoluto_output)
+        return True
+    return False
 
 def leer_csv(path_input: str) -> pd.DataFrame:
     """
