@@ -1,6 +1,8 @@
 backtesting_screener*
 Backstesting_ft_screener.txt
 data/*
+trades/
+dmi*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
